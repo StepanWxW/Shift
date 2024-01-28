@@ -1,5 +1,6 @@
 package com.example.shift.data
 
+import com.example.shift.data.api.ApiClient
 import com.example.shift.domain.UserRepository
 import com.example.shift.domain.model.UserEntity
 

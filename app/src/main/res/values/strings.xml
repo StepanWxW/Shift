@@ -1,4 +1,36 @@
 <resources>
     <string name="app_name">Shift</string>
     <string name="users">Пользователи</string>
+    <string name="gender">gender:</string>
+    <string name="email">email:</string>
+    <string name="location">location:</string>
+    <string name="first_name">first name:</string>
+    <string name="last_name">last name:</string>
+    <string name="title">title:</string>
+    <string name="street_number">street number:</string>
+    <string name="street_name">street name:</string>
+    <string name="city">city:</string>
+    <string name="state">state:</string>
+    <string name="country">country:</string>
+    <string name="coordinates_latitude">coordinates latitude:</string>
+    <string name="coordinates_longitude">coordinates longitude:</string>
+    <string name="timezone_offset">timezone offset:</string>
+    <string name="timezone_description">timezone description:</string>
+    <string name="phone">phone:</string>
+    <string name="login">login:</string>
+    <string name="uuid">uuid:</string>
+    <string name="username">username:</string>
+    <string name="password">password:</string>
+    <string name="salt">salt:</string>
+    <string name="md5">md5:</string>
+    <string name="sha1">sha1:</string>
+    <string name="sha256">sha256:</string>
+    <string name="dob_date">dob date:</string>
+    <string name="dob_age">dob age:</string>
+    <string name="registered_date">registered date:</string>
+    <string name="registered_age">registered age:</string>
+    <string name="id_name">id name:</string>
+    <string name="id_value">id value:</string>
+    <string name="cell">cell:</string>
+    <string name="nat">nat:</string>
 </resources>

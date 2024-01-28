@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="StyleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="StyleTextRight50" parent="StyleText">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_width">50dp</item>
+    </style>
+
+    <style name="StyleTextRight80" parent="StyleText">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_width">80dp</item>
+    </style>
+
+    <style name="StyleTextRight100" parent="StyleText">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_width">100dp</item>
+    </style>
+
+    <style name="StyleTextRight140" parent="StyleText">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_width">140dp</item>
+    </style>
+
+    <style name="Style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+</resources>

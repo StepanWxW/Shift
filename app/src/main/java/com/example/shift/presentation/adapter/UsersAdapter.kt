@@ -7,15 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shift.R
 import com.example.shift.databinding.ItemUserBinding
 import com.example.shift.domain.model.UserEntity
+import com.example.shift.presentation.ClickListener
 import com.squareup.picasso.Picasso
 
-class UsersAdapter (private val usersList: List<UserEntity>) : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
+class UsersAdapter (private val usersList: List<UserEntity>,private val clickListener: ClickListener) : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
 
     class ViewHolder(binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
         val textName = binding.textName
         val image = binding.imageView
         val phone = binding.textPhone
         val textAddress = binding.textAddress
+        val itemUser = binding.itemUser
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,6 +32,9 @@ class UsersAdapter (private val usersList: List<UserEntity>) : RecyclerView.Adap
         holder.phone.text = user.phone
         holder.textAddress.text = "${user.location.country} ${user.location.city} ${user.location.street.name}"
         Picasso.get().load(user.picture.medium).placeholder(R.drawable.user).into(holder.image)
+        holder.itemUser.setOnClickListener {
+            clickListener.infoClick(user.login.uuid)
+        }
     }
 
     override fun getItemCount(): Int {

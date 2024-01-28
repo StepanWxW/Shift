@@ -1,32 +1,17 @@
 package com.example.shift.domain
 
+import com.example.shift.data.db.UserDao
 import com.example.shift.domain.model.UserEntity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import java.io.IOException
 
-class UserUseCase (private val userRepository: UserRepository) {
+
+class UserUseCase (private val userRepository: UserRepository, private val userDao: UserDao) {
 
     suspend fun getUsers(): List<UserEntity> {
-//        val isInternetAvailable = checkInternetAvailability()
-//        return if (isInternetAvailable) {
-            val users = userRepository.getUsers()
-//            pizzaDao.clearAllPizzas()
-//            pizzaDao.insertAllPizzas(pizzas)
-            return users
-//        } else {
-//            pizzaDao.getAllPizzas()
-//        }
+        val users = userDao.getAllUsers()
+        return users.ifEmpty {
+            val usersRepository = userRepository.getUsers()
+            userDao.insertUsers(*usersRepository.toTypedArray())
+            usersRepository
+        }
     }
-//    private suspend fun checkInternetAvailability(): Boolean {
-//        return withContext(Dispatchers.IO) {
-//            try {
-//                val process = Runtime.getRuntime().exec("ping -c 1 google.com")
-//                val exitValue = process.waitFor()
-//                return@withContext (exitValue == 0)
-//            } catch (e: IOException) {
-//                return@withContext false
-//            }
-//        }
-//    }
 }

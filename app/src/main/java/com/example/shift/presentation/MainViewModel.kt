@@ -8,11 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.shift.domain.UserUseCase
 import com.example.shift.domain.model.UserEntity
 import com.example.shift.data.UserRepositoryImpl
+import com.example.shift.data.db.AppDatabase
 import kotlinx.coroutines.launch
 
 class MainViewModel (application: Application) : AndroidViewModel(application) {
-    //    private val pizzaDao = PizzaDatabase.getDatabase(application).pizzaDao()
-    val usersUseCase = UserUseCase(UserRepositoryImpl()/*, pizzaDao*/)
+    private val userDao = AppDatabase.getInstance(application).userDao()
+    val usersUseCase = UserUseCase(UserRepositoryImpl(), userDao)
     private val _users = MutableLiveData<List<UserEntity>>()
     val users: LiveData<List<UserEntity>> get() = _users
     private val _errorLiveData = MutableLiveData<String>()
@@ -22,11 +23,11 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
     }
     private fun getUsers() {
         viewModelScope.launch {
-//            try {
+            try {
                 _users.value = usersUseCase.getUsers()
-//            } catch (e: Exception) {
-//                _errorLiveData.value = "Не известная ошибка"
-//            }
+            } catch (e: Exception) {
+                _errorLiveData.value = "Не известная ошибка"
+            }
         }
     }
 }

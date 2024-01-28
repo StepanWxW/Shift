@@ -1,4 +1,4 @@
-package com.example.shift.data
+package com.example.shift.data.api
 
 import com.example.shift.domain.model.Results
 import retrofit2.http.GET

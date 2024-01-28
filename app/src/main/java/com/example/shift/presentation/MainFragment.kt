@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.shift.R
 import com.example.shift.databinding.FragmentMainBinding
 import com.example.shift.presentation.adapter.UsersAdapter
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), ClickListener {
 
     private var _binding: FragmentMainBinding? = null
     private lateinit var viewModel: MainViewModel
@@ -30,10 +31,11 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         usersObserver()
         exceptionObserver()
+
     }
     private fun usersObserver() {
         viewModel.users.observe(viewLifecycleOwner) {
-            binding.recyclerViewItemUsers.adapter = UsersAdapter(it)
+            binding.recyclerViewItemUsers.adapter = UsersAdapter(it, this)
             binding.progressBar.visibility = View.GONE
         }
     }
@@ -44,5 +46,10 @@ class MainFragment : Fragment() {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
             }
         }
+    }
+    override fun infoClick(uuid: String) {
+        val args = Bundle()
+        args.putString("uuid", uuid)
+        findNavController().navigate(R.id.userFragment, args)
     }
 }
