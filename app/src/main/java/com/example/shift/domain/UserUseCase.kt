@@ -14,4 +14,10 @@ class UserUseCase (private val userRepository: UserRepository, private val userD
             usersRepository
         }
     }
+    suspend fun getRefreshUsers(): List<UserEntity> {
+        userDao.clearAllUsers()
+        val usersRepository = userRepository.getUsers()
+        userDao.insertUsers(*usersRepository.toTypedArray())
+        return usersRepository
+    }
 }

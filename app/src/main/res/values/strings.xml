@@ -33,4 +33,6 @@
     <string name="id_value">id value:</string>
     <string name="cell">cell:</string>
     <string name="nat">nat:</string>
+    <string name="choose_email">"Выберите приложение для отправки электронной почты"</string>
+    <string name="choose_app">"Выберите приложение"</string>
 </resources>

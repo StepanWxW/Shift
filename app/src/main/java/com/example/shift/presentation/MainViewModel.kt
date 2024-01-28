@@ -30,4 +30,14 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+    fun refreshUsers() {
+        viewModelScope.launch {
+            try {
+                _users.value = usersUseCase.getRefreshUsers()
+            } catch (e: Exception) {
+                _errorLiveData.value = "Не известная ошибка"
+            }
+        }
+    }
 }

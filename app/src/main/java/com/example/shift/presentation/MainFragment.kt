@@ -31,12 +31,15 @@ class MainFragment : Fragment(), ClickListener {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         usersObserver()
         exceptionObserver()
-
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.refreshUsers()
+        }
     }
     private fun usersObserver() {
         viewModel.users.observe(viewLifecycleOwner) {
             binding.recyclerViewItemUsers.adapter = UsersAdapter(it, this)
             binding.progressBar.visibility = View.GONE
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 
@@ -45,6 +48,7 @@ class MainFragment : Fragment(), ClickListener {
             errorMessage?.let {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
             }
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
     override fun infoClick(uuid: String) {
