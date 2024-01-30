@@ -1,6 +1,5 @@
 package com.example.shift.presentation
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,11 +10,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.shift.R
 import com.example.shift.databinding.FragmentMainBinding
 import com.example.shift.presentation.adapter.UsersAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment(), ClickListener {
 
     private var _binding: FragmentMainBinding? = null
-    private lateinit var viewModel: MainViewModel
+//    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,7 +29,7 @@ class MainFragment : Fragment(), ClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+//        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         usersObserver()
         exceptionObserver()
         binding.swipeRefreshLayout.setOnRefreshListener {

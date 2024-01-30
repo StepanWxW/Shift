@@ -3,7 +3,6 @@ package com.example.shift.presentation
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,11 +13,12 @@ import com.example.shift.R
 import com.example.shift.databinding.FragmentUserBinding
 import com.example.shift.domain.model.UserEntity
 import com.squareup.picasso.Picasso
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserFragment : Fragment() {
 
     private var _binding: FragmentUserBinding? = null
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
     private val binding get() = _binding!!
     private var userUI: UserEntity? = null
 
@@ -33,7 +33,6 @@ class UserFragment : Fragment() {
     @SuppressLint("QueryPermissionsNeeded")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val uuid = arguments?.getString("uuid")
         if(uuid != null) {

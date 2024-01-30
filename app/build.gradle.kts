@@ -62,5 +62,8 @@ dependencies {
     implementation ("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 
+    implementation ("io.insert-koin:koin-core:3.4.3")
+    implementation ("io.insert-koin:koin-android:3.4.3")
+
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
 }
